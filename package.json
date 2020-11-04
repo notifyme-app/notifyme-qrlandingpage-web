@@ -1,0 +1,34 @@
+{
+  "name": "n2step-qrlandingpage-web",
+  "version": "0.0.1",
+  "description": "Key QR Code Landing Page Web App",
+  "main": "index.js",
+  "repository": "https://github.com/UbiqueInnovation/n2step-qrlandingpage-web.git",
+  "author": "n2step@ubique.ch",
+  "license": "MPL-2.0",
+  "private": true,
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "babel-loader": "^8.1.0",
+    "babel-polyfill": "^6.26.0",
+    "css-loader": "^5.0.0",
+    "path-browserify": "^1.0.1",
+    "sass": "^1.28.0",
+    "sass-loader": "^10.0.5",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.3.2",
+    "webpack-cli": "^4.1.0",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "scripts": {
+    "build:dev": "webpack --config webpack.dev.js --env BASE_URL='https://qr-dev.n2s.ch'",
+    "build:prod": "webpack --config webpack.prod.js --env BASE_URL='https://qr.n2s.ch'",
+    "dev-server": "webpack serve --config webpack.dev.js --env BASE_URL='https://qr-dev.n2s.ch'"
+  },
+  "dependencies": {
+    "libsodium": "^0.7.8",
+    "libsodium-wrappers": "^0.7.8",
+    "protobufjs": "^6.10.1"
+  }
+}

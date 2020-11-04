@@ -1,2 +1,2 @@
-# n2step-qrlandingpage-web
-Landing page web app for QR codes
+# n2step-qrgenerator-web
+Key QR Code Generator Web App

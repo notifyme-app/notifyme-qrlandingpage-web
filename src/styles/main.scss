@@ -1,0 +1,16 @@
+.keys-row {
+  display: flex;
+  
+  .key-wrapper {
+    display: none;
+    margin-left: 20px;
+  }
+}
+
+.center-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
