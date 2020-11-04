@@ -8,17 +8,18 @@ async function libsodium() {
     return _sodium;
 }
   
-const root = protobuf.Root.fromJSON(qrMessage);
-const QrMessage = root.lookupType("qrpackage.QrMessage");
+const rootQr = protobuf.Root.fromJSON(qrMessage);
+const QRCodeContent = rootQr.lookupType("qrpackage.QRCodeContent");
+const QRCodeWrapper = rootQr.lookupType("qrpackage.QRCodeWrapper");
 
 let readProtobuf = async () => {
     var urlPayload = window.location.hash.slice(1);
     console.log("URL payload: " + urlPayload);
     var sodium = await libsodium();
     var protobufBytes = sodium.from_base64(urlPayload);
-    var qrMessage = QrMessage.decode(protobufBytes);    
-    console.log(qrMessage);
-    document.getElementById('qrcode-content').innerHTML = "<pre>" + JSON.stringify(qrMessage, null, 2) + "</pre>";
+    var qrCode = QRCodeWrapper.decode(protobufBytes);    
+    console.log(qrCode);
+    document.getElementById('qrcode-content').innerHTML = "<pre>" + JSON.stringify(qrCode, null, 2) + "</pre>";
 };
 
 let ready = (fn) => {
