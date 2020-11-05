@@ -13,13 +13,15 @@ const QRCodeContent = rootQr.lookupType("qrpackage.QRCodeContent");
 const QRCodeWrapper = rootQr.lookupType("qrpackage.QRCodeWrapper");
 
 let readProtobuf = async () => {
-    var urlPayload = window.location.hash.slice(1);
+    const urlPayload = window.location.hash.slice(1);
     console.log("URL payload: " + urlPayload);
-    var sodium = await libsodium();
-    var protobufBytes = sodium.from_base64(urlPayload);
-    var qrCode = QRCodeWrapper.decode(protobufBytes);    
+    const sodium = await libsodium();
+    const protobufBytes = sodium.from_base64(urlPayload);
+    const qrCode = QRCodeWrapper.decode(protobufBytes);    
     console.log(qrCode);
-    document.getElementById('qrcode-content').innerHTML = "<pre>" + JSON.stringify(qrCode, null, 2) + "</pre>";
+    const contentProtobufBytes = QRCodeContent.encode(qrCode.content).finish();
+    const isSignatureValid = sodium.crypto_sign_verify_detached(qrCode.signature, contentProtobufBytes, qrCode.content.publicKey);
+    document.getElementById('qrcode-content').innerHTML = "<pre>" + JSON.stringify(qrCode, null, 2) + "</pre><br><p>Signature valid: " + isSignatureValid + "</p>";
 };
 
 let ready = (fn) => {
