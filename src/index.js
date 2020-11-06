@@ -33,6 +33,10 @@ let ready = (fn) => {
 }
 
 ready(() => {
+    const commit = `${GIT_INFO}`;
+    if (commit) {
+        document.getElementById("revision").textContent = `Commit: ` + commit;
+    }    
     readProtobuf();
 })
 

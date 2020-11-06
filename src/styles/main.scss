@@ -14,3 +14,15 @@
   align-items: center;
   min-height: 100vh;
 }
+
+#revision {
+  position: fixed;
+  bottom: 10;
+  right: 10;
+  font-size: 12px;
+
+  @media print {
+    display: none;
+  }
+}
+
