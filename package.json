@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Key QR Code Landing Page Web App",
   "main": "index.js",
-  "repository": "https://github.com/UbiqueInnovation/n2step-qrlandingpage-web.git",
+  "repository": "https://github.com/notifyme-app/notifyme-qrlandingpage-web.git",
   "author": "n2step@ubique.ch",
   "license": "MPL-2.0",
   "private": true,
